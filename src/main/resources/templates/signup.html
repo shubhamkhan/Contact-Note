@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card">
+						<div th:if="${session.message}" th:classappend="${#session.message.type}" class="alert" role="alert">
+						  <p th:text="${session.message.content}"></p>
+						  <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+						<h1 class="text-center">Register Here !!</h1>
+						<form novalidate action="" th:action="@{/do_register}" method="post" th:object="${user}">
+							<div class="mb-3">
+								<label for="name" class="form-label">Name</label>
+							    <input type="text" name="name" th:value="${user.name}" class="form-control" th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}" id="name" placeholder="Enter you name" required/>
+							    <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email</label>
+							    <input type="text" name="email" th:value="${user.email}" class="form-control" id="email" placeholder="Enter you email" required/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+							    <input type="password" name="password" class="form-control" id="password" placeholder="Enter you password" required/>
+							</div>
+							<div class="mb-3">
+								<label for="about" class="form-label">About</label>
+							    <textarea rows="3" name="about" th:text="${user.about}" class="form-control" id="about" placeholder="Enter something yourself" required> </textarea>
+							</div>
+							<div class="mb-3">
+								<input name="agreement" type="checkbox" class="form-check-input" id="exampleCheck1">
+							    <label class="form-check-label" for="exampleCheck1">I accept terms and conditions</label>
+							</div>
+							<button type="submit" class="btn bg-primary btn-block text-white">Submit</button>
+							<button type="reset" class="btn bg-primary btn-block text-white">Reset</button>						
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
