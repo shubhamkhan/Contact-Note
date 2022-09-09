@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+</head>
+<body>
+	<section>
+		<div class="card mx-3 mb-3">
+			<div class="card-body">
+				<h1 class="text-center">Add Contact</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-12">
+							<form
+								action="#"
+								th:object="${contact}"
+								enctype="multipart/form-data"
+								method="POST"
+								th:action="@{/user/process-contact}"
+								class="mt-2"
+							>
+								<div class="input-group mb-3">
+								  <span class="input-group-text">First Name</span>
+								  <input type="text" id="name" name="name" class="form-control" placeholder="Enter your first name">
+								</div>
+								<div class="input-group mb-3">
+								  <span class="input-group-text">Last Name</span>
+								  <input type="text" id="secondName" name="secondName" class="form-control" placeholder="Enter your last name">
+								</div>
+								<div class="input-group mb-3">
+								  <span class="input-group-text">Phone</span>
+								  <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter your phone number">
+								</div>
+								<div class="input-group mb-3">
+								  <span class="input-group-text">Email</span>
+								  <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email id">
+								</div>
+								<div class="input-group mb-3">
+								  <span class="input-group-text">Work</span>
+								  <input type="number" id="work" name="work" class="form-control" placeholder="Enter your work id">
+								</div>
+								<div class="input-group mb-3">
+								  <textarea id="description" name="description" class="form-control" placeholder="Enter your description" rows="3"></textarea>
+								</div>
+								<div class="input-group mb-3">
+								<span class="input-group-text">Profile Image</span>
+								  <input type="file" id="image" name="image" class="form-control" />
+								</div>
+								<div class="d-grid gap-2 col-6 mx-auto">
+								  <button class="btn bg-primary text-white" type="button">Save Contact</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

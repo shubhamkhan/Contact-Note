@@ -19,3 +19,89 @@ body {
 	padding: 10px;
 	background: #FFFFFF;
 }
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 60px;
+  max-width: 600px;
+  height: 340px;
+  border: 1px solid #e2e2e2;
+  background-color: #FFFFFF;
+}
+
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -62px;
+  text-align: right;
+}
+
+/* sidebar start */
+
+@media only screen and (max-width: 600px) {
+	.sidebar {
+		display: none;
+		width: 50% !important;
+		background: #FFFFFF;
+		height: 100vh;
+		position: fixed;
+		padding-top: 20px;
+		margin-top: -10px !important;
+	}
+	
+	.content {
+		margin-left: 0% !important;
+		margin-top: 4rem !important;
+	}
+}
+
+.sidebar {
+	width: 18%;
+	background: #FFFFFF;
+	height: 100vh;
+	position: fixed;
+	padding-top: 45px;
+	z-index: 1;
+}
+
+.sidebar a {
+	display: block;
+	width: 100%;
+	padding: 10px 25px;
+	text-decoration: none;
+	color: gray;
+}
+
+.sidebar a:hover {
+	background: #E2E2E2;
+}
+
+.sidebar .divider {
+	height: .5px;
+	width: 100%;
+	background: #E2E2E2;
+	margin-top: 10px;
+}
+
+.content {
+	margin-left: 20%;
+	margin-top: 3.5rem !important;
+}
+
+.sidebar .closeBtn {
+	position: absolute;
+	top: 0;
+	right: 20px;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+/* Add Contact */
+span, input, textarea {
+	border-radius: 0px !important;
+}
+
+.form-control:focus {
+	box-shadow: none !important;
+}
