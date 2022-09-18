@@ -98,10 +98,22 @@ body {
 }
 
 /* Add Contact */
-span, input, textarea {
+span, input, textarea, a {
 	border-radius: 0px !important;
 }
 
 .form-control:focus {
 	box-shadow: none !important;
+}
+
+.profile_photo {
+	width: 35px;
+	height: 35px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.profile_picture {
+	width: 200px;
+	height: 200px;
 }

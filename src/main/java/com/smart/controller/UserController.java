@@ -6,16 +6,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
-import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -94,6 +97,8 @@ public class UserController {
 			// processing and uploading file
 			if(file.isEmpty())
 			{
+				System.out.println("File is empty");
+				contact.setImage("contacts.png");
 				// if the file is empty then try our message
 			} else {
 				// file upload to the folder and update the name to contact
@@ -123,16 +128,69 @@ public class UserController {
 	}
 	
 	// view contacts handler
-	@GetMapping("/view_contacts")
-	public String viewContacts(Model model, Principal principal)
+	@GetMapping("/view_contacts/{page}")
+	public String viewContacts(@PathVariable("page") Integer page, Model model, Principal principal)
 	{
 		model.addAttribute("title", "View Contact - Smart Contact Manager");
 		
 		String userName = principal.getName();
 		User user = userRepository.getUserByUserName(userName);
-		List<Contact> contacts = contactRepository.findContactsByUser(user.getId());
+		
+		PageRequest pageable = PageRequest.of(page, 2);
+		
+		Page<Contact> contacts = contactRepository.findContactsByUser(user.getId(),pageable);
 		
 		model.addAttribute("contacts", contacts);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", contacts.getTotalPages());
+		
 		return "normal/view_contacts";
+	}
+
+	// view single contact details
+	@RequestMapping("/{cId}/contact")
+	public String showContactDetail(
+			@PathVariable("cId") Integer cId,
+			Model model,
+			Principal principal
+	)
+	{
+		Optional<Contact> contactOptional = contactRepository.findById(cId);
+		Contact contact = contactOptional.get();
+		
+		String userName = principal.getName();
+		User user = userRepository.getUserByUserName(userName);
+		
+		if(user.getId() == contact.getUser().getId())
+		{
+			model.addAttribute("contact", contact);
+			model.addAttribute("title", contact.getName());
+		}
+		
+		return "normal/contact_detail";
+	}
+	
+	// delete contact handler
+	@GetMapping("/delete/{cId}")
+	public String deleteContact(@PathVariable("cId") Integer cId, Model model, HttpSession session)
+	{
+		Contact contact = contactRepository.findById(cId).get();
+		
+		contact.setUser(null);
+		contactRepository.delete(contact);
+		
+		session.setAttribute("message", new Message("Contact delete succesfully...", "success"));
+		return "redirect:/user/view_contacts/0";
+	}
+	
+	// open update form handler
+	@PostMapping("/update_contact/{cId}")
+	public String updateForm(@PathVariable("cId") Integer cId, Model model)
+	{
+		model.addAttribute("title", "Update Contact - Smart Contact Manager");
+		
+		Contact contact = contactRepository.findById(cId).get();
+		model.addAttribute("contact",contact);
+		return "normal/update_form";
 	}
 }

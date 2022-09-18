@@ -8,7 +8,7 @@
 	<section>
 		<div class="card mx-3 mb-3">
 			<div class="card-body">
-				<h1 class="text-center">Add Contact</h1>
+				<h1 class="text-center">Update Contact</h1>
 				<div class="container-fluid mt-1">
 					<div class="row">
 						<div class="col-md-12">
@@ -17,7 +17,7 @@
 								th:object="${contact}"
 								enctype="multipart/form-data"
 								method="POST"
-								th:action="@{/user/process_contact}"
+								th:action="@{/user/process_update}"
 								class="mt-2"
 							>
 								<div class="input-group mb-3">
@@ -26,7 +26,7 @@
 									  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
 									</svg>
 								  </span>
-								  <input type="text" id="name" name="name" class="form-control" placeholder="Enter your first name" required />
+								  <input th:value="${contact.name}" type="text" id="name" name="name" class="form-control" placeholder="Enter your first name" required />
 								</div>
 								<div class="input-group mb-3">
 								  <span class="input-group-text">
@@ -34,7 +34,7 @@
 									  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 									</svg>
 								  </span>
-								  <input type="text" id="secondName" name="secondName" class="form-control" placeholder="Enter your last name" required />
+								  <input th:value="${contact.secondName}" type="text" id="secondName" name="secondName" class="form-control" placeholder="Enter your last name" required />
 								</div>
 								<div class="input-group mb-3">
 								  <span class="input-group-text">
@@ -42,7 +42,7 @@
 									  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
 									</svg>
 								  </span>
-								  <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required />
+								  <input th:value="${contact.phone}" type="number" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required />
 								</div>
 								<div class="input-group mb-3">
 								  <span class="input-group-text">
@@ -50,7 +50,7 @@
 									  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
 									</svg>
 								  </span>
-								  <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email id" required />
+								  <input th:value="${contact.email}" type="email" id="email" name="email" class="form-control" placeholder="Enter your email id" required />
 								</div>
 								<div class="input-group mb-3">
 								  <span class="input-group-text">
@@ -59,11 +59,15 @@
 									  <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
 									</svg>
 								  </span>
-								  <input type="text" id="work" name="work" class="form-control" placeholder="Enter your work id" required />
+								  <input th:value="${contact.work}" type="text" id="work" name="work" class="form-control" placeholder="Enter your work id" required />
 								</div>
 								<div class="input-group mb-3">
-								  <textarea id="description" name="description" class="form-control" placeholder="Enter your description" rows="3"></textarea>
+								  <textarea th:taxt="${contact.description}" id="description" name="description" class="form-control" placeholder="Enter your description" rows="3"></textarea>
 								</div>
+								<div class="container text-center m-2">
+									<img src="" th:src="@{'/img/'+${contact.image}}" alt="" class="profile_photo" />
+								</div>
+								<p class="text-secondary">Choose new profile pic</p>
 								<div class="input-group mb-3">
 								<span class="input-group-text">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-image" viewBox="0 0 16 16">

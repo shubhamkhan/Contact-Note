@@ -10,7 +10,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6">
 					<div class="my-card">
-						<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+						<div th:if="${session.message}" th:classappend="${session.message.type}" class="text-center alert" role="alert">
 						  <p th:text="${session.message.content}"></p>
 						  <th:block th:text="${#session.removeAttribute('message')}"></th:block>
 						</div>

@@ -14,6 +14,7 @@
 						<thead>
 							<tr>
 								<th scope="col">#</th>
+								<th scope="col">Photo</th>
 								<th scope="col">Name</th>
 								<th scope="col">Phone</th>
 								<th scope="col">Email</th>
@@ -23,16 +24,37 @@
 						<tbody>
 							<tr th:each="c : ${contacts}">
 								<td th:text="${c.cId}"></td>
-								<td th:text="${c.name}"></td>
-								<td th:text="${c.phone}"></td>
-								<td th:text="${c.email}"></td>
 								<td>
-									<button class="btn btn-danger btn-sm">Delete</button>
-									<button class="btn btn-primary btn-sm">Edit</button>
+									<img src="" th:src="@{'/img/'+${c.image}}" class="profile_photo" />
+								</td>
+								<td style="white-space: nowrap;" th:text="${c.name}"></td>
+								<td th:text="${c.phone}"></td>
+								<td>
+									<a href="#" th:href="@{'/user/'+${c.cId}}+'/contact'">
+										<span th:text="${c.email}"></span>
+									</a>
+								</td>
+								<td>
+									<a href="#" th:onclick="|deleteContact(${c.cId})|" class="btn btn-danger btn-sm">Delete</a>
+									<form method="POST" th:action="@{'/user/update_contact/'+${c.cId}}" style="display: contents; margin: 5px;" class="mt-2">
+										<button type=submit class="btn btn-primary btn-sm">Edit</button>
+									</form>
 								</td>
 							</tr>
 						</tbody>
 					</table>
+					<!-- pagination -->
+					<nav aria-label="Page navigation example">
+					  <ul class="pagination">
+					    <li th:if="${currentPage != 0}" class="page-item"><a class="page-link" th:href="@{'/user/view_contacts/'+${currentPage-1}}" href="#">Previous</a></li>
+					    <li th:classappend="${currentPage == i-1 ? 'active' : ''}" th:each="i: ${#numbers.sequence(1,totalPages)}" class="page-item">
+					    	<a class="page-link" th:href="@{'/user/view_contacts/'+${i-1}}" href="#">
+					    		<span th:text="${i}"></span>
+					    	</a>
+					    </li>
+					    <li th:if="${currentPage+1 != totalPages}" class="page-item"><a class="page-link" th:href="@{'/user/view_contacts/'+${currentPage+1}}" href="#">Next</a></li>
+					  </ul>
+					</nav>
 				</div>
 			</div>
 		</div>
