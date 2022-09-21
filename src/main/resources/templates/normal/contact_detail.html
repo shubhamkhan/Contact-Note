@@ -10,7 +10,7 @@
 		<div class="card mx-3 mb-3" th:if=${contact}>
 			<div class="card-body">
 				<div class="container text-center">
-					<img src="" th:src="@{'/img/'+${contact.image}}" class="profile_picture" />
+					<img src="" th:src="@{'/img/'+${contact.image}}" class="profile_picture rounded-circle" />
 				</div>
 				<h1 class="text-center mt-3" th:text="${contact.name}"></h1>
 				<div class="table-responsive">
@@ -39,7 +39,9 @@
 					</div>
 					<div class="container mt-3 text-center">
 						<a href="#" th:onclick="|deleteContact(${contact.cId})|" class="btn btn-danger">Delete</a>
-						<button class="btn btn-primary">Edit</button>
+						<form method="POST" th:action="@{'/user/update_contact/'+${contact.cId}}" style="display: contents; margin: 5px;" class="mt-2">
+							<button type=submit class="btn btn-primary">Edit</button>
+						</form>
 					</div>
 				</div>
 			</div>

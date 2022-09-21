@@ -6,10 +6,43 @@
 </head>
 <body>
 	<section>
-		<h1>This is Profile page</h1>
-		<h2>We are building spring boot project</h2>
-		<h3>User Name: <span th:text="${user.name}"></span></h3>
-		<h3>User Email: <span th:text="${user.email}"></span></h3>
+		<h1 class="text-center">This is your profile</h1>
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+					<div class="container text-center">
+						<img src="" th:src="@{'/img/'+${user.imageUrl}}" class="profile_picture rounded-circle" />
+					</div>
+					<h1 class="text-center" th:text="${user.name}"></h1>
+					<table class="table text-center">
+						<thead>
+							<tr>
+								<th scope="col">#USERID</th>
+								<th th:text="${user.id}"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="col">Email</td>
+								<td th:text="${user.email}"></td>
+							</tr>
+							<tr>
+								<td scope="col">Role</td>
+								<td th:text="${user.role}"></td>
+							</tr>
+							<tr>
+								<td scope="col">Account Active</td>
+								<td th:text="${user.enabled}"></td>
+							</tr>
+							<tr>
+								<td scope="col">About</td>
+								<td th:text="${user.about}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</section>
 </body>
 </html>

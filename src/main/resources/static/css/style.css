@@ -98,7 +98,7 @@ body {
 }
 
 /* Add Contact */
-span, input, textarea, a {
+span, input, textarea, a, button {
 	border-radius: 0px !important;
 }
 
@@ -116,4 +116,18 @@ span, input, textarea, a {
 .profile_picture {
 	width: 200px;
 	height: 200px;
+}
+
+/* search */
+.search_container {
+	position: relative;
+}
+
+.search_result {
+	position: absolute;
+	background: white;
+	width: 100%;
+	padding:10px;
+	border: 1px solid gray;
+	display: none;
 }
