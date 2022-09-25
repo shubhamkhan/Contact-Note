@@ -87,7 +87,13 @@
 	      tinymce.init({
 	        selector: '#description'
 	      });
-	    </script>							
+	    </script>
+	    <script>
+		document.addEventListener("DOMContentLoaded", function(event) { 
+  			$(".item").removeClass("active_sidelink");
+	    	$("#add_contact").addClass("active_sidelink");
+		});
+		</script>							
 	</section>
 </body>
 </html>

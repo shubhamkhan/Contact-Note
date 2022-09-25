@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,9 @@ public class UserController {
 	
 	@Autowired
 	private ContactRepository contactRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	// method for adding common data to responce
 	@ModelAttribute
@@ -71,6 +75,38 @@ public class UserController {
 		model.addAttribute("user", user);
 		model.addAttribute("title", "About - Smart Contact Manager");
 		return "normal/profile";
+	}
+	
+	// open setting handler
+	@GetMapping("/settings")
+	public String openSettings(Model model)
+	{
+		model.addAttribute("title", "Settings - Smart Contact Manager");
+		return "normal/settings";
+	}
+	
+	// change password
+	@PostMapping("/change_password")
+	public String changePassword(
+			@RequestParam("oldPassword") String oldPassword, 
+			@RequestParam("newPassword") String newPassword,
+			Principal principal,
+			HttpSession session
+	)
+	{
+		String userName = principal.getName();
+		User currentUser = userRepository.getUserByUserName(userName);
+		
+		if(bCryptPasswordEncoder.matches(oldPassword, currentUser.getPassword()))
+		{
+			currentUser.setPassword(bCryptPasswordEncoder.encode(newPassword));
+			userRepository.save(currentUser);
+			session.setAttribute("message", new Message("Your password is successfully changed !!", "success"));
+		} else {
+			session.setAttribute("message", new Message("Please enter correct old password !! Try again..", "danger"));
+			return "redirect:/user/settings";
+		}
+		return "redirect:/user/index";
 	}
 
 	// open add form handler

@@ -131,3 +131,8 @@ span, input, textarea, a, button {
 	border: 1px solid gray;
 	display: none;
 }
+
+.active_sidelink {
+	background: #009688;
+	color: white !important;
+}

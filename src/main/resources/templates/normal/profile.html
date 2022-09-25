@@ -6,7 +6,6 @@
 </head>
 <body>
 	<section>
-		<h1 class="text-center">This is your profile</h1>
 		<div class="container">
 			<div class="card">
 				<div class="card-body">
@@ -43,6 +42,12 @@
 				</div>
 			</div>
 		</div>
+		<script>
+		document.addEventListener("DOMContentLoaded", function(event) { 
+  			$(".item").removeClass("active_sidelink");
+	    	$("#profile").addClass("active_sidelink");
+		});
+		</script>
 	</section>
 </body>
 </html>
