@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+</head>
+<body>
+	<section>
+		<div id="login">
+	        <div class="container">
+	            <div id="login-row" class="row justify-content-center align-items-center">
+	                <div id="login-column" class="col-md-6">
+	                    <div id="login-box" style="height: 270px;" class="col-md-12">
+	                        
+	                        <!-- message box -->
+	                        <div th:if="${session.message}">
+							  <p class="alert alert-danger mx-3 mt-2 text-center" role="alert" th:text="${session.message}"></p>
+							  <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+							</div>
+	                        <!--  -->
+	                        
+	                        <form id="login-form" class="form" th:action="@{/send_otp}" method="post">
+	                        	<h3 class="text-center">Your Registered Email</h3>
+	                            <div class="form-group">
+	                                <label for="email" class="">Email:</label><br>
+	                                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required />
+	                            </div>
+	                            <div class="form-group text-center mt-3">
+	                                <button type="submit" class="btn btn-warning btn-md text-white">Send OTP</button>
+	                            </div>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+</body>
+</html>
