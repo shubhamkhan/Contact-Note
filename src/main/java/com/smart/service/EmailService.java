@@ -14,7 +14,7 @@ public class EmailService {
 	{
 		boolean f = false;
 		
-		String from = "abc@gmail.com";
+		String from = "test@gmail.com";
 		
 		// variable for gmail
 		String host = "smtp.gmail.com";
@@ -35,7 +35,7 @@ public class EmailService {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("abc@gmail.com", "");
+				return new PasswordAuthentication(from, "*********");
 			}
 		});
 		
@@ -61,7 +61,7 @@ public class EmailService {
 			// Step 3: send the message using Transport class
 			Transport.send(m);
 			
-			System.out.println("Sent success..........");
+			System.out.println("OTP sent successfully");
 			f = true;
 		} catch (Exception e) {
 			e.printStackTrace();

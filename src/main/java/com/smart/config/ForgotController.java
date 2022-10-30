@@ -47,7 +47,7 @@ public class ForgotController {
 		System.out.println("OTP: "+otp);
 		
 		String subject = "OTP From Smart Contact Manager";
-		String message = "<div style='border: 1px solid #e2e2e2; padding: 20px'><h1> OTP: "+otp+"</h1></div>";
+		String message = "<div style='text-align: -webkit-center'><h1 style='border: 1px solid #2F944A; width: 180px; padding: 5px'> OTP: "+otp+"</h1></div>";
 		String to = email;
 		
 		boolean flag = emailService.sendEmail(subject, message, to);
@@ -96,7 +96,7 @@ public class ForgotController {
 		user.setPassword(bcrypt.encode(newPassword));
 		userRepository.save(user);
 		session.setAttribute("message", "You have entered wrong OTP!!");
-		return "redirect:/signin?change=password change successfully..";
+		return "redirect:/signin?change=Password change successfully..";
 	}
 
 }

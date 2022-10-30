@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+</head>
+<body>
+	<section>
+		<div id="login">
+	        <div class="container">
+	            <div id="login-row" class="row justify-content-center align-items-center">
+	                <div id="login-column" class="col-md-6">
+	                    <div id="login-box" style="height: 200px;" class="col-md-12">
+	                       <!--  <form id="login-form" class="form">  -->
+	                       <div id="login-form" class="form">
+	                            <h3 class="text-center">Donate Us</h3>
+	                            <div class="form-group">
+	                                <label for="username" class="">Amount:</label><br>
+	                                <input type="text" name="amount" id="amount" class="form-control">
+	                            </div>
+	                            <div class="form-group text-center mt-2">
+	                                <input onclick="payment()" type="submit" name="pay" class="btn btn-success btn-md text-white" value="PAY">
+	                            </div>
+	                        </div>
+	                       <!-- </form>  --> 
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+</body>
+</html>

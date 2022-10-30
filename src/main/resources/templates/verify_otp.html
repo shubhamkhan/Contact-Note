@@ -19,7 +19,7 @@
 							</div>
 							<!--  -->
 							
-							<div class="text-center">
+							<div th:unless="${session.message}" class="text-center">
                             	<p role="alert" class="alert alert-success">We have sent OTP to your email</p>
                             </div>
 	                        <form id="login-form" class="form" th:action="@{/verify-otp}" method="post">
