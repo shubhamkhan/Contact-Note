@@ -1,12 +1,12 @@
-package com.smart.config;
+package com.contact.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.smart.dao.UserRepository;
-import com.smart.entities.User;
+import com.contact.dao.UserRepository;
+import com.contact.entities.User;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
 

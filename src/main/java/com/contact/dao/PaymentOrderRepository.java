@@ -1,8 +1,8 @@
-package com.smart.dao;
+package com.contact.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.smart.entities.PaymentOrder;
+import com.contact.entities.PaymentOrder;
 
 public interface PaymentOrderRepository extends JpaRepository<PaymentOrder, Long>{
 

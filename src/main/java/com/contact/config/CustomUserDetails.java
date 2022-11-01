@@ -1,15 +1,18 @@
-package com.smart.config;
+package com.contact.config;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.smart.entities.User;
+import com.contact.entities.User;
 
-import java.util.List;
 
+@SuppressWarnings("serial")
 public class CustomUserDetails implements UserDetails {
 
 	private User user;
@@ -22,7 +25,7 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
-		return List.of(simpleGrantedAuthority);
+		return Collections.unmodifiableList(new ArrayList<>(Arrays.asList(simpleGrantedAuthority)));
 	}
 
 	@Override

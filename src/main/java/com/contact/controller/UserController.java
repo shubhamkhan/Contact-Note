@@ -1,4 +1,4 @@
-package com.smart.controller;
+package com.contact.controller;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -26,11 +26,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.smart.dao.ContactRepository;
-import com.smart.dao.UserRepository;
-import com.smart.entities.Contact;
-import com.smart.entities.User;
-import com.smart.helper.Message;
+import com.contact.dao.ContactRepository;
+import com.contact.dao.UserRepository;
+import com.contact.entities.Contact;
+import com.contact.entities.User;
+import com.contact.helper.Message;
 
 @Controller
 @RequestMapping("/user")
@@ -62,7 +62,7 @@ public class UserController {
 	@RequestMapping("/index")
 	public String dashboard(Model model, Principal principal)
 	{
-		model.addAttribute("title", "Dashboard - Smart Contact Manager");
+		model.addAttribute("title", "Dashboard - Contact Note");
 		return "normal/user_dashboard";
 	}
 	
@@ -73,7 +73,7 @@ public class UserController {
 		User user = userRepository.getUserByUserName(principal.getName());
 		
 		model.addAttribute("user", user);
-		model.addAttribute("title", "About - Smart Contact Manager");
+		model.addAttribute("title", "About - Contact Note");
 		return "normal/profile";
 	}
 	
@@ -81,7 +81,7 @@ public class UserController {
 	@GetMapping("/settings")
 	public String openSettings(Model model)
 	{
-		model.addAttribute("title", "Settings - Smart Contact Manager");
+		model.addAttribute("title", "Settings - Contact Note");
 		return "normal/settings";
 	}
 	
@@ -113,7 +113,7 @@ public class UserController {
 	@GetMapping("/add_contact")
 	public String openAddContactForm(Model model)
 	{
-		model.addAttribute("title", "Add Contact - Smart Contact Manager");
+		model.addAttribute("title", "Add Contact - Contact Note");
 		model.addAttribute("contact", new Contact());
 		return "normal/add_contact_form";
 	}
@@ -168,7 +168,7 @@ public class UserController {
 	@GetMapping("/view_contacts/{page}")
 	public String viewContacts(@PathVariable("page") Integer page, Model model, Principal principal)
 	{
-		model.addAttribute("title", "View Contact - Smart Contact Manager");
+		model.addAttribute("title", "View Contact - Contact Note");
 		
 		String userName = principal.getName();
 		User user = userRepository.getUserByUserName(userName);
@@ -233,7 +233,7 @@ public class UserController {
 	@PostMapping("/update_contact/{cId}")
 	public String updateForm(@PathVariable("cId") Integer cId, Model model)
 	{
-		model.addAttribute("title", "Update Contact - Smart Contact Manager");
+		model.addAttribute("title", "Update Contact - Contact Note");
 		
 		Contact contact = contactRepository.findById(cId).get();
 		model.addAttribute("contact",contact);

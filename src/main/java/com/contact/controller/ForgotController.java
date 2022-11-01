@@ -1,4 +1,4 @@
-package com.smart.config;
+package com.contact.controller;
 
 import java.util.Random;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.smart.dao.UserRepository;
-import com.smart.entities.User;
-import com.smart.service.EmailService;
+import com.contact.dao.UserRepository;
+import com.contact.entities.User;
+import com.contact.service.EmailService;
 
 @Controller
 public class ForgotController {
@@ -46,7 +46,7 @@ public class ForgotController {
 		
 		System.out.println("OTP: "+otp);
 		
-		String subject = "OTP From Smart Contact Manager";
+		String subject = "OTP From Contact Note";
 		String message = "<div style='text-align: -webkit-center'><h1 style='border: 1px solid #2F944A; width: 180px; padding: 5px'> OTP: "+otp+"</h1></div>";
 		String to = email;
 		

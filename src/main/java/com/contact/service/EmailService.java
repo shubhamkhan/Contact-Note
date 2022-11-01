@@ -1,4 +1,4 @@
-package com.smart.service;
+package com.contact.service;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

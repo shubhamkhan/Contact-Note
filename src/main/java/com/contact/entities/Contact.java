@@ -1,4 +1,4 @@
-package com.smart.entities;
+package com.contact.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.smart.controller;
+package com.contact.controller;
 
 import java.util.Map;
 import java.util.Random;
@@ -22,15 +22,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.contact.dao.PaymentOrderRepository;
+import com.contact.dao.UserRepository;
+import com.contact.entities.PaymentOrder;
+import com.contact.entities.User;
+import com.contact.helper.Message;
 import com.razorpay.Order;
 import com.razorpay.Payment;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
-import com.smart.dao.PaymentOrderRepository;
-import com.smart.dao.UserRepository;
-import com.smart.entities.PaymentOrder;
-import com.smart.entities.User;
-import com.smart.helper.Message;
 
 
 @Controller
@@ -50,14 +50,14 @@ public class HomeController {
 	@RequestMapping("/")
 	public String home(Model model)
 	{
-		model.addAttribute("title", "Home - Smart Contact Manager");
+		model.addAttribute("title", "Home - Contact Note");
 		return "home";
 	}
 	
 	@RequestMapping("/signup")
 	public String signup(Model model)
 	{
-		model.addAttribute("title", "Register - Smart Contact Manager");
+		model.addAttribute("title", "Register - Contact Note");
 		model.addAttribute("user", new User());
 		return "signup";
 	}
@@ -111,7 +111,7 @@ public class HomeController {
 	@GetMapping("/signin")
 	public String customLogin(Model model)
 	{
-		model.addAttribute("title", "Login - Smart Contact Manager");
+		model.addAttribute("title", "Login - Contact Note");
 		return "login";
 	}
 	
@@ -119,7 +119,7 @@ public class HomeController {
 	@GetMapping("/donate")
 	public String donateUs(Model model)
 	{
-		model.addAttribute("title", "Donate - Smart Contact Manager");
+		model.addAttribute("title", "Donate - Contact Note");
 		return "donate";
 	}
 	
@@ -187,6 +187,6 @@ public class HomeController {
 		  // Handle Exception
 		  System.out.println(e.getMessage());
 		}
-		return ResponseEntity.ok(Map.of("message", "Updated"));
+		return ResponseEntity.ok("Update Successfully");
 	}
 }

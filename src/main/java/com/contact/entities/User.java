@@ -1,4 +1,4 @@
-package com.smart.entities;
+package com.contact.entities;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name="USER")
+@Table(name="USERS")
 public class User {
 
 	@Id

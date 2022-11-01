@@ -118,5 +118,5 @@ const updatePaymentOnServer = async(payment_id, order_id) => {
 	
 	const response = await data.json();
 	
-	console.log(response.message);
+	console.log(JSON.stringify(response));
 }

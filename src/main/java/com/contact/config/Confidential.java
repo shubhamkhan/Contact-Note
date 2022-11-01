@@ -1,4 +1,4 @@
-package com.smart.config;
+package com.contact.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

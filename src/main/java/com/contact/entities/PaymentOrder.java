@@ -1,4 +1,4 @@
-package com.smart.entities;
+package com.contact.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="orders")
+@Table(name="ORDERS")
 public class PaymentOrder {
 
 	@Id

@@ -1,4 +1,4 @@
-package com.smart.helper;
+package com.contact.helper;
 
 public class Message {
 
