@@ -32,7 +32,7 @@ git clone https://github.com/shubhamkhan/Contact-Note.git
 mvn clean install -U
 ```
 
-- Run Spring boot project in STS to start the app on port 8080:-
+- Run Spring boot project in STS to start the app on port 8282:-
 
 ```
 Run the file ContactNoteApplication.java
