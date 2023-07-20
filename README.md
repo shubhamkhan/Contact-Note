@@ -41,7 +41,38 @@ Run the file ContactNoteApplication.java
 **Note** :- You need to have JAVA JDK installed on your local machine to run this app locally.
 
 # Screenshot
-
+[1] Home Page
+---
+![Contact Note](Home.JPG)
+---
+[2] Dashboard
+---
+![Contact Note](Dashboard.JPG)
+---
+[3] Login
+---
+![Contact Note](Login.JPG)
+---
+[4] SignUp
+---
+![Contact Note](SignUp.JPG)
+---
+[5] Add Contact
+---
+![Contact Note](Add_Contact.JPG)
+---
+[6] View Contacts
+---
+![Contact Note](View_Contacts.JPG)
+---
+[7] Profile
+---
+![Contact Note](Profile.JPG)
+---
+[8] Donate Us
+---
+![Contact Note](Donate_Us.JPG)
+---
 
 # License
 
